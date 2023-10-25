@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student ID Cards</title>
+    <style>
+        .id-card {
+            width: 200px;
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #000;
+        }
+        .photo {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student ID Cards</h1>
+    {% for student in students %}
+        <div class="id-card">
+            {% if student.photo %}
+                <img src="{{ student.photo.url }}" class="photo" alt="{{ student.name }} Photo">
+            {% else %}
+                <img src="{% static 'path/to/default/photo.png' %}" class="photo" alt="Default Photo">
+            {% endif %}
+            <p>Name: {{ student.name }}</p>
+            <p>Course: {{ student.course }}</p>
+            <p>Grade: {{ student.grade }}</p>
+            <p>Year: {{ student.year }}</p>
+        </div>
+    {% endfor %}
+</body>
+</html>

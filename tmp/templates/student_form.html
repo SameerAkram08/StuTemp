@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% if form.instance.pk %}Update Student{% else %}Create Student{% endif %}</title>
+</head>
+<body>
+    <h1>{% if form.instance.pk %}Update Student{% else %}Create Student{% endif %}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+        <img src="{{ student.photo.url }}" class="photo" alt="{{ student.name }} Photo">
+
+    <a href="{% url 'student_list' %}">Back to Student List</a>
+</body>
+</html>
